@@ -9,7 +9,7 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 const apiUrl = "https://apiv2.simulatorradio.com/metadata/combined"
 const apiHistoryUrl = "https://apiv2.simulatorradio.com/metadata/history?limit="
-const apiTimetableUrl = "https://api.simulatorradio.com/timetable?day="
+const apiTimetableUrl = "https://apiv2.simulatorradio.com/timetable?day="
 const audioUrl = "https://simulatorradio.stream/320"
 
 export function Player() {
@@ -274,7 +274,7 @@ function TimetableItem(props) {
         <img src={"https://simulatorradio.com/processor/avatar?size=256&name=" + props.slot.dj.avatar} alt="" />
         <div className="info">
             <div className="inline">
-                <span className="title">{props.slot.dj.displayname}</span>
+                <span className="title">{props.slot.dj.display_name}</span>
                 <span className="date">{addZero(date.getHours())}:{addZero(date.getMinutes())} - {addZero(date.getHours() + 1)}:{addZero(date.getMinutes())}</span>
             </div>
             <ReactMarkdown className="subTitle">{props.slot.details.toString()}</ReactMarkdown>
