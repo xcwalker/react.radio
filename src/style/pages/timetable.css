@@ -1,0 +1,154 @@
+/**** Timetable ****/
+section#timetable {
+    /* position */
+    position: relative;
+
+    /* sizing */
+    width: 100%;
+}
+
+section#timetable .container {
+    /* sizing */
+    height: 100%;
+    width: 100%;
+    padding: var(--header-style-padding);
+
+    /* flex */
+    display: flex;
+    flex-direction: column;
+    gap: var(--default-padding);
+}
+
+section#timetable .container h2 {
+    /* text */
+    text-align: center;
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+section#timetable .container .inline {
+    /* flex */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: var(--default-padding);
+}
+
+section#timetable .container .inline button {
+    /* sizing */
+    --size: 25px;
+    width: var(--size);
+    height: var(--size);
+
+    /* flex */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* text */
+    font-size: var(--size);
+
+    /* styling */
+    border-radius: 50%;
+    color: var(--foreground-color-100);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+section#timetable .container .inline button:hover,
+section#timetable .container .inline button:focus {
+    outline: 2px solid currentColor;
+}
+
+section#timetable .container ul {
+    /* spacing */
+    padding: 0;
+    margin: 0;
+
+    /* grid */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+    gap: var(--default-padding);
+}
+
+section#timetable .container ul li {
+    /* sizing */
+    padding: var(--default-padding);
+
+    /* flex */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--default-padding);
+
+    /* styling */
+    border-radius: 10px;
+    background-color: var(--background-color-200);
+}
+
+section#timetable .container ul li img {
+    /* sizing */
+    --size: 75px;
+    width: var(--size);
+    height: var(--size);
+    flex-shrink: 0;
+
+    /* styling */
+    border-radius: 50%;
+}
+
+section#timetable .container ul li .info {
+    /* flex */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: calc(var(--default-padding) / 2);
+}
+
+section#timetable .container ul li .info .inline {
+    /* flex */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--default-padding);
+}
+
+section#timetable .container ul li .info .inline .title {
+    /* text */
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1;
+
+    /* styling */
+    color: var(--foreground-color-100);
+}
+
+section#timetable .container ul li .info .inline .date {
+    /* text */
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+
+    /* styling */
+    color: var(--foreground-color-300);
+}
+
+section#timetable .container ul li .info .subTitle {
+    /* text */
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1;
+
+    /* styling */
+    color: var(--foreground-color-100);
+}
+
+section#timetable .container ul li .info .subTitle * {
+    /* spacing */
+    margin: 0;
+    padding: 0;
+}

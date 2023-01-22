@@ -2,13 +2,13 @@
 A lightweight react based website for streaming radio.
 
 ### Uses an api link for:
- - Current Song
- - Past Songs
- - DJs
+ - [X] Current Song
+ - [X] Past Songs
+ - [X] DJs
  
 ### Features:
- - Custom Player
- - Timetable
+ - [X] Custom Player
+ - [X] Timetable
  
 ### Requires:
  - API url (Example: https://apiv2.simulatorradio.com)
