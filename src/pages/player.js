@@ -219,7 +219,6 @@ function History() {
 }
 
 function Timetable() {
-    const [today, setToday] = useState(new Date());
     const [displayDate, setDisplayDate] = useState(new Date());
     const [timetable, setTimetable] = useState();
     const [ticking, setTicking] = useState(true);
