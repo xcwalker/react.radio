@@ -123,6 +123,18 @@ export function Player() {
                     <div className="art" onClick={() => { stop() }}>
                         <img src={nowPlaying?.art} alt="" />
 
+                        <svg
+                            width={512}
+                            height={512}
+                            viewBox="0 0 135.47 135.47"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <g fill="#fff">
+                                <path d="M34.901 29.575V46.58h63.82c4.505 0 7.848.98 10.029 2.942 2.252 1.963 3.379 4.725 3.379 8.286 0 3.488-1.127 6.213-3.38 8.175-2.18 1.962-5.523 2.944-10.029 2.944H34.901v16.679h63.61l13.835 20.276h23.11l-16.468-23.997c4.617-2.221 8.217-5.268 10.8-9.142 2.761-4.216 4.142-9.194 4.142-14.935 0-5.814-1.38-10.83-4.142-15.045-2.762-4.287-6.686-7.558-11.774-9.81-5.014-2.253-11.01-3.38-17.987-3.38z" />
+                                <path d="M0 29.575v17.007h33.575c4.506 0 7.85.98 10.03 2.942 2.252 1.963 3.379 4.725 3.379 8.286 0 3.488-1.127 6.214-3.38 8.176-2.18 1.962-5.523 2.943-10.029 2.943H0v16.68h33.368l13.835 20.276h23.11L53.846 81.888c4.617-2.221 8.217-5.268 10.8-9.142 2.761-4.216 4.142-9.194 4.142-14.935 0-5.814-1.38-10.83-4.142-15.044-2.762-4.288-6.687-7.558-11.774-9.811-5.015-2.253-11.01-3.38-17.987-3.38z" />
+                            </g>
+                        </svg>
+
                         {state === "paused" && <button className="material-symbols-outlined large" onClick={() => { playPause() }} title="Play">play_arrow</button>}
                         {state === "play" && <button className="material-symbols-outlined large" onClick={() => { playPause() }} title="Pause">pause</button>}
                     </div>
@@ -133,7 +145,7 @@ export function Player() {
                 </div>
                 <div className="controls">
                     <div className="left">
-                        {document.querySelector("#audioPlayer")?.currentTime + 5 > document.querySelector("#audioPlayer")?.duration && <span className="live">Live</span>}
+                        {document.querySelector("#audioPlayer")?.currentTime + 7.5 > document.querySelector("#audioPlayer")?.duration && <span className="live">Live</span>}
                     </div>
                     <div className="center">
                         <button className="material-symbols-outlined" onClick={() => { rewind() }} disabled={document.querySelector("#audioPlayer")?.currentTime < 10} title="Rewind 10s">replay_10</button>
@@ -233,23 +245,23 @@ function Timetable() {
         return () => clearTimeout(timer)
     }, [count, ticking])
 
-    function addDay () {
+    function addDay() {
         setDisplayDate(new Date(displayDate.setDate(displayDate.getDate() + 1)))
         setDayIndex(dayIndex + 1);
     }
 
-    function removeDay () {
+    function removeDay() {
         setDisplayDate(new Date(displayDate.setDate(displayDate.getDate() - 1)))
         setDayIndex(dayIndex - 1);
     }
 
     return <section id="timetable">
         <div className="container">
-                <h2>Timetable</h2>
+            <h2>Timetable</h2>
             <div className="inline">
-                <button onClick={() => {removeDay()}} className="material-symbols-outlined">remove</button>
+                <button onClick={() => { removeDay() }} className="material-symbols-outlined">remove</button>
                 <h3>{displayDate.toLocaleDateString("en-gb", { weekday: 'long' })} {displayDate.getDate()} {displayDate.toLocaleDateString("en-gb", { month: 'long' })} {displayDate.getFullYear()}</h3>
-                <button onClick={() => {addDay()}} className="material-symbols-outlined" >add</button>
+                <button onClick={() => { addDay() }} className="material-symbols-outlined" >add</button>
             </div>
             <ul>
                 {timetable && timetable.map((slot, index) => {
