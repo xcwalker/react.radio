@@ -98,7 +98,7 @@ section#player .dj .about .subTitle {
     line-height: 1;
 
     /* styling */
-    color: var(--dnu-light-color-300);
+    color: var(--dnu-light-color-200);
 }
 
 section#player .dj .about .subTitle * {
