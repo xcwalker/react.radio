@@ -1,6 +1,5 @@
 import { Helmet } from "react-helmet";
 import { Footer } from "./components/footer";
-import { Header } from "./components/header";
 import { Player } from "./pages/player";
 
 import "./style/defaults/variables.css"
@@ -13,7 +12,6 @@ export default function App() {
         <title>ReactRadio</title>
       </Helmet>
 
-      <Header />
       <Player />
       <Footer />
   </>

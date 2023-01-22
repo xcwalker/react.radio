@@ -1,0 +1,99 @@
+#root>footer {
+    /* sizing */
+    padding: var(--footer-padding);
+
+    /* styling */
+    background-color: var(--background-color-200);
+}
+
+#root>footer .container {
+    column-count: auto;
+    column-width: 250px;
+    gap: 40px;
+}
+
+#root>footer .container section {
+    /* sizing */
+    max-width: 250px;
+    margin-bottom: 20px;
+
+    /* flex */
+    display: flex;
+    flex-direction: column;
+    gap: var(--default-padding);
+
+    /* column */
+    break-inside: avoid;
+}
+
+#root>footer .container section a[type="svg"] {
+    /* flex */
+    display: flex;
+
+    /* styling */
+    color: var(--foreground-color-100);
+}
+
+#root>footer .container section a[type="svg"]:focus {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
+#root>footer .container section a[type="svg"] svg {
+    /* sizing */
+    width: 100%;
+
+    /* styling */
+    fill: currentColor;
+    color: inherit;
+}
+
+#root>footer .container section a[type="link"] {
+    /* sizing */
+    width: 100%;
+    padding: var(--default-padding);
+
+    /* text */
+    font-size: 18px;
+    font-weight: 800;
+    text-align: center;
+    text-decoration: none;
+
+    /* styling */
+    color: var(--foreground-color-100);
+    background-color: var(--background-color-300);
+    border-radius: 10px;
+    border: 2px solid transparent;
+}
+
+#root>footer .container section a[type="link"]:hover,
+#root>footer .container section a[type="link"]:focus {
+    border-color: currentColor;
+    background-color: transparent;
+    outline: none;
+}
+
+#root>footer .container section a[type="link"]:active {
+    color: var(--background-color-100);
+    border-color: currentColor;
+    background-color: var(--foreground-color-300);
+}
+
+#root>footer .container section p {
+    /* spacing */
+    margin: 0;
+    padding: 0;
+}
+
+#root>footer .container section div.divider {
+    /* sizing */
+    width: 100%;
+    height: 2px;
+
+    /* styling */
+    background-color: currentColor;
+}
+
+#root>footer .container section a[type="inline"] {
+    color: inherit;
+}
