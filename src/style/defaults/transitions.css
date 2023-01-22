@@ -1,0 +1,21 @@
+body {
+    --transition-duration-600: 0.5s;
+    --transition-duration-500: 0.25s;
+    --transition-duration-400: 0.125s;
+
+    --transition-method-default: ease-in-out;
+}
+
+body {
+    --transition-color-600: color var(--transition-duration-600) var(--transition-method-default);
+    --transition-color-500: color var(--transition-duration-500) var(--transition-method-default);
+    --transition-color-400: color var(--transition-duration-400) var(--transition-method-default);
+
+    --transition-background_color-600: background-color var(--transition-duration-600) var(--transition-method-default);
+    --transition-background_color-500: background-color var(--transition-duration-500) var(--transition-method-default);
+    --transition-background_color-400: background-color var(--transition-duration-400) var(--transition-method-default);
+
+    --transition-scale-600: scale var(--transition-duration-600) var(--transition-method-default);
+    --transition-scale-500: scale var(--transition-duration-500) var(--transition-method-default);
+    --transition-scale-400: scale var(--transition-duration-400) var(--transition-method-default);
+}
