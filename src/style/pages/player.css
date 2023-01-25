@@ -91,7 +91,7 @@ section#player .dj .about .subTitle {
     /* spacing */
     margin: 0;
     padding: 0;
-    
+
     /* text */
     font-size: 14px;
     font-weight: 600;
@@ -237,7 +237,7 @@ section#player .container .player .info span.subTitle {
     text-align: center;
 
     /* styling */
-    color: var(--dnu-light-color-400);
+    color: var(--dnu-light-color-200);
 }
 
 /*** Controls ***/
@@ -345,7 +345,7 @@ section#player .container .controls input[type="range"] {
 }
 
 section#player .container .controls input[type="range"]::-moz-range-progress,
-section#player .container .controls input[type="range"]::-webkit-slider-progress{
+section#player .container .controls input[type="range"]::-webkit-slider-progress {
     height: 100%;
     border-radius: 100vmax;
     background: var(--selector-color);
@@ -386,4 +386,12 @@ section#player span.live {
     color: white;
     background-color: red;
     border-radius: 4px;
+
+    /* no-select */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
