@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from "react";
+import { Fragment, useCallback, useEffect } from "react";
 import { useState } from "react"
 import { Helmet } from "react-helmet";
 
@@ -53,7 +53,7 @@ export function Player() {
         }
     }
 
-    function playPause() {
+    const playPause = useCallback(() => {
         var player = document.querySelector("#audioPlayer")
 
         if (audioUrlState === "") {
@@ -64,14 +64,14 @@ export function Player() {
             setState("play")
             player.play();
             return
-        } else {
+        } else if (state === "play") {
             setState("paused")
             player.pause();
             return
         }
-    }
+    }, [audioUrlState, state])
 
-    function live() {
+    async function live() {
         var player = document.querySelector("#audioPlayer")
 
         if (audioUrlState === "") {
@@ -79,7 +79,7 @@ export function Player() {
         }
 
         setState("play")
-        player.load();
+        await player.load();
         player.play();
     }
 
@@ -104,6 +104,33 @@ export function Player() {
         player.volume = e.target.value / 100;
     }
 
+    useEffect(() => {
+        if (nowPlaying === undefined || nowPlaying === null || audioUrlState === "" || navigator.mediaSession.metadata?.title === nowPlaying.title) return
+
+        if ('mediaSession' in navigator) {
+            navigator.mediaSession.metadata = new MediaMetadata({
+                title: nowPlaying.title,
+                artist: nowPlaying.artists,
+                album: "ReactRadio",
+                artwork: [{ src: nowPlaying.art }],
+            });
+
+            navigator.mediaSession.setActionHandler('play', () => {
+                console.log("play")
+                
+                setState("play")
+                document.querySelector("#audioPlayer").play()
+            });
+            
+            navigator.mediaSession.setActionHandler('pause', () => {
+                console.log("pause")
+                
+                setState("paused")
+                document.querySelector("#audioPlayer").pause()
+            });
+        }
+    }, [nowPlaying, playPause, audioUrlState])
+
     return <>
         <Helmet>
             {state === "paused" && audioUrlState === "" && <title>{'ReactRadio'}</title>}
@@ -112,7 +139,7 @@ export function Player() {
         </Helmet>
         <section id="player" onLoad={() => { setTicking(true) }}>
             <div className="dj">
-                <img src={"https://simulatorradio.com/processor/avatar?size=256&name=" + dj?.avatar} alt="" className="profilePicture" />
+                {dj?.avatar && <img src={"https://simulatorradio.com/processor/avatar?size=256&name=" + dj?.avatar} alt="" className="profilePicture" />}
                 <div className="about">
                     <span className="title">{dj?.displayname}</span>
                     <ReactMarkdown className="subTitle">{dj?.details}</ReactMarkdown>
@@ -158,7 +185,7 @@ export function Player() {
                         <button className="material-symbols-outlined" onClick={() => { fastForward() }} disabled={document.querySelector("#audioPlayer")?.currentTime + 30 > document.querySelector("#audioPlayer")?.duration + 5} title="FastForward 30s">forward_30</button>
                     </div>
                     <div className="right">
-                        <input type="range" min="0" max="100" value={volume} class="slider" id="volume" onChange={(e) => { volumeChange(e) }} />
+                        <input type="range" min="0" max="100" value={volume} className="slider" id="volume" onChange={(e) => { volumeChange(e) }} />
                     </div>
                 </div>
             </div>
@@ -202,7 +229,7 @@ function History() {
                 <ul>
                     {history && history.map((item, index) => {
                         if (index === 0) {
-                            return <Fragment />
+                            return <Fragment key={index} />
                         }
                         return <li key={index}>
                             <img src={item.art} alt="" />
