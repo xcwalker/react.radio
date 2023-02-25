@@ -395,3 +395,54 @@ section#player span.live {
     -ms-user-select: none;
     user-select: none;
 }
+
+@media (max-width: 700px) {
+    section#player .container .controls {
+        flex-direction: column;
+    }
+
+    section#player .container .controls .left {
+        /* position */
+        position: fixed;
+        inset: 0;
+        bottom: auto;
+
+        /* sizing */
+        width: 100%;
+
+        /* flex */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    section#player span.live {
+        /* sizing */
+        width: 100%;
+
+        /* text */
+        font-size: 12px;
+        text-align: center;
+
+        /* styling */
+        border-radius: 0;
+    }
+
+    section#player .dj {
+        /* position */
+        inset: 0;
+        left: 50%;
+        translate: -50% 0;
+        top: 33px;
+        bottom: auto;
+
+        /* sizing */
+        width: 80vw;
+    }
+}
+
+@media (max-height: 700px) {
+    section#player .dj {
+        display: none;
+    }
+}

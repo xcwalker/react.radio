@@ -107,6 +107,9 @@ section#history .container ul li .info span.title {
     /* overflow */
     overflow: hidden;
     text-overflow: ellipsis;
+
+    /* styling */
+    color: var(--dnu-light-color-100);
 }
 
 section#history .container ul li .info span.subTitle {
@@ -114,4 +117,7 @@ section#history .container ul li .info span.subTitle {
     font-size: 14px;
     font-weight: 500;
     line-height: 1;
+
+    /* styling */
+    color: var(--dnu-light-color-200);
 }
