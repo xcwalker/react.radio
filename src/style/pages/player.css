@@ -501,6 +501,26 @@ section#player .container .controls .info {
     section#player .container .controls .info {
         display: flex;
     }
+
+    section#player .container .controls .info span.title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        /* number of lines to show */
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    section#player .container .controls .info span.subTitle {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        /* number of lines to show */
+        line-clamp: 1;
+        -webkit-box-orient: vertical;
+    }
 }
 
 @media (max-height: 200px) and (min-width: 775px) {
