@@ -19,7 +19,7 @@ html /* padding */ {
     --default-padding: 10px;
     --header-padding: calc(var(--default-padding) * 1) min(calc(var(--default-padding) * 4), max(4vw, var(--default-padding)));
     --header-bottom-padding: var(--header-height) min(calc(var(--default-padding) * 4), max(4vw, var(--default-padding))) 0;
-    --header-style-padding: var(--header-height) min(calc(var(--default-padding) * 4), max(4vw, var(--default-padding)));
+    --header-style-padding: min(var(--header-height), max(10vh, calc(var(--default-padding) * 3))) min(calc(var(--default-padding) * 4), max(5vw, var(--default-padding)));
     --header-style-half-padding: calc(var(--header-height) / 2) min(calc(var(--default-padding) * 2), max(2vw, var(--default-padding)));
     --footer-padding: calc(var(--default-padding) * 2) min(calc(var(--default-padding) * 4), max(4vw, var(--default-padding)));
 }

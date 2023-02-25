@@ -151,8 +151,6 @@ export function Player() {
                         <img src={nowPlaying?.art} alt="" />
 
                         <svg
-                            width={512}
-                            height={512}
                             viewBox="0 0 135.47 135.47"
                             xmlns="http://www.w3.org/2000/svg"
                         >
@@ -173,6 +171,10 @@ export function Player() {
                 <div className="controls">
                     <div className="left">
                         {document.querySelector("#audioPlayer")?.currentTime + 7.5 > document.querySelector("#audioPlayer")?.duration && <span className="live">Live</span>}
+                    </div>
+                    <div className="info">
+                        <span className="title">{nowPlaying?.title}</span>
+                        <span className="subTitle">{nowPlaying?.artists}</span>
                     </div>
                     <div className="center">
                         <button className="material-symbols-outlined" onClick={() => { rewind() }} disabled={document.querySelector("#audioPlayer")?.currentTime < 10} title="Rewind 10s">replay_10</button>
