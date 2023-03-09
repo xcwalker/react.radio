@@ -1,8 +1,11 @@
-html /* colors */ {    
+html
+
+/* colors */
+    {
     /** DO NOT USE **/
     /* foreground */
     --dnu-light-color-100: hsl(0, 0%, 93%);
-    --dnu-light-color-200: hsl(0, 0%, 87%);
+    --dnu-light-color-200: hwb(0 87% 13%);
     --dnu-light-color-300: hsl(0, 0%, 81%);
     --dnu-light-color-400: hsl(0, 0%, 75%);
     --dnu-light-color-500: hsl(0, 0%, 69%);
@@ -15,7 +18,10 @@ html /* colors */ {
     --dnu-dark-color-500: hsl(0, 0%, 31%);
 }
 
-html /* padding */ {
+html
+
+/* padding */
+    {
     --default-padding: 10px;
     --header-padding: calc(var(--default-padding) * 1) min(calc(var(--default-padding) * 4), max(4vw, var(--default-padding)));
     --header-bottom-padding: var(--header-height) min(calc(var(--default-padding) * 4), max(4vw, var(--default-padding))) 0;
@@ -24,88 +30,94 @@ html /* padding */ {
     --footer-padding: calc(var(--default-padding) * 2) min(calc(var(--default-padding) * 4), max(4vw, var(--default-padding)));
 }
 
-html /* sizing */ {
+html
+
+/* sizing */
+    {
     --header-height: 52px;
     --header-offset: min(75px, 10vmin);
     --header-stacked-offset: calc(var(--header-height) + (var(--header-offset) * 2));
 }
 
-html /* radii */ {
+html
+
+/* radii */
+    {
     --border-radius: 5px;
 }
 
 @media (prefers-color-scheme: dark) {
-html {
-    /** colors **/
-    /* foreground */
-    --foreground-color-100: var(--dnu-light-color-100);
-    --foreground-color-200: var(--dnu-light-color-200);
-    --foreground-color-300: var(--dnu-light-color-300);
-    --foreground-color-400: var(--dnu-light-color-400);
-    --foreground-color-500: var(--dnu-light-color-500);
+    html {
+        /** colors **/
+        /* foreground */
+        --foreground-color-100: var(--dnu-light-color-100);
+        --foreground-color-200: var(--dnu-light-color-200);
+        --foreground-color-300: var(--dnu-light-color-300);
+        --foreground-color-400: var(--dnu-light-color-400);
+        --foreground-color-500: var(--dnu-light-color-500);
 
-    /* background */
-    --background-color-100: var(--dnu-dark-color-100);
-    --background-color-200: var(--dnu-dark-color-200);
-    --background-color-300: var(--dnu-dark-color-300);
-    --background-color-400: var(--dnu-dark-color-400);
-    --background-color-500: var(--dnu-dark-color-500);
+        /* background */
+        --background-color-100: var(--dnu-dark-color-100);
+        --background-color-200: var(--dnu-dark-color-200);
+        --background-color-300: var(--dnu-dark-color-300);
+        --background-color-400: var(--dnu-dark-color-400);
+        --background-color-500: var(--dnu-dark-color-500);
 
-    /* brand */
-    --brand-header-color: var(--foreground-color-200);
+        /* brand */
+        --brand-header-color: var(--foreground-color-200);
 
-    /* selector */
-    --selector-color: hsl(214, 100%, 44%);
+        /* selector */
+        --selector-color: hsl(214, 100%, 44%);
 
-    /* forms */
-    --form-color-selector: hsl(214, 100%, 44%);
-    --form-color-invalid: hsl(0, 100%, 50%);
-    --form-color-invalid-hold: hsl(39, 100%, 50%);
-    --form-color-valid-hold: hsl(120, 100%, 38%);
-    --form-color-valid: hsl(120, 100%, 25%);
+        /* forms */
+        --form-color-selector: hsl(214, 100%, 44%);
+        --form-color-invalid: hsl(0, 100%, 50%);
+        --form-color-invalid-hold: hsl(39, 100%, 50%);
+        --form-color-valid-hold: hsl(120, 100%, 38%);
+        --form-color-valid: hsl(120, 100%, 25%);
 
-    --form-color-selector-opac: hsl(214, 100%, 44%, 0.25);
-    --form-color-invalid-opac: hsl(0, 100%, 50%, 0.25);
-    --form-color-invalid-hold-opac: hsl(39, 100%, 50%, 0.25);
-    --form-color-valid-hold-opac: hsl(120, 100%, 38%, 0.25);
-    --form-color-valid-opac: hsl(120, 100%, 25%, 0.25);
-}
+        --form-color-selector-opac: hsl(214, 100%, 44%, 0.25);
+        --form-color-invalid-opac: hsl(0, 100%, 50%, 0.25);
+        --form-color-invalid-hold-opac: hsl(39, 100%, 50%, 0.25);
+        --form-color-valid-hold-opac: hsl(120, 100%, 38%, 0.25);
+        --form-color-valid-opac: hsl(120, 100%, 25%, 0.25);
+    }
 }
 
 @media (prefers-color-scheme: light) {
-html {
-    /** colors **/
-    /* foreground */
-    --foreground-color-100: var(--dnu-dark-color-100);
-    --foreground-color-200: var(--dnu-dark-color-200);
-    --foreground-color-300: var(--dnu-dark-color-300);
-    --foreground-color-400: var(--dnu-dark-color-400);
-    --foreground-color-500: var(--dnu-dark-color-500);
+    html {
+        /** colors **/
+        /* foreground */
+        --foreground-color-100: var(--dnu-dark-color-100);
+        --foreground-color-200: var(--dnu-dark-color-200);
+        --foreground-color-300: var(--dnu-dark-color-300);
+        --foreground-color-400: var(--dnu-dark-color-400);
+        --foreground-color-500: var(--dnu-dark-color-500);
 
-    /* background */
-    --background-color-100: var(--dnu-light-color-100);
-    --background-color-200: var(--dnu-light-color-200);
-    --background-color-300: var(--dnu-light-color-300);
-    --background-color-400: var(--dnu-light-color-400);
-    --background-color-500: var(--dnu-light-color-500);
+        /* background */
+        --background-color-100: var(--dnu-light-color-100);
+        --background-color-200: var(--dnu-light-color-200);
+        --background-color-300: var(--dnu-light-color-300);
+        --background-color-400: var(--dnu-light-color-400);
+        --background-color-500: var(--dnu-light-color-500);
 
-    /* brand */
-    --brand-header-color: #f03a47;
+        /* brand */
+        --brand-header-color: #f03a47;
 
-    /* selector */
-    --selector-color: hsl(214, 100%, 44%);
+        /* selector */
+        --selector-color: hsl(214, 100%, 44%);
 
-    /* forms */
-    --form-color-selector: hsl(214, 100%, 44%);
-    --form-color-invalid: hsl(0, 100%, 50%);
-    --form-color-invalid-hold: hsl(39, 100%, 50%);
-    --form-color-valid-hold: hsl(120, 100%, 38%);
-    --form-color-valid: hsl(120, 100%, 25%);
+        /* forms */
+        --form-color-selector: hsl(214, 100%, 44%);
+        --form-color-invalid: hsl(0, 100%, 50%);
+        --form-color-invalid-hold: hsl(39, 100%, 50%);
+        --form-color-valid-hold: hsl(120, 100%, 38%);
+        --form-color-valid: hsl(120, 100%, 25%);
 
-    --form-color-selector-opac: hsl(214, 100%, 44%, 0.25);
-    --form-color-invalid-opac: hsl(0, 100%, 50%, 0.25);
-    --form-color-invalid-hold-opac: hsl(39, 100%, 50%, 0.25);
-    --form-color-valid-hold-opac: hsl(120, 100%, 38%, 0.25);
-    --form-color-valid-opac: hsl(120, 100%, 25%, 0.25);
-}
+        --form-color-selector-opac: hsl(214, 100%, 44%, 0.25);
+        --form-color-invalid-opac: hsl(0, 100%, 50%, 0.25);
+        --form-color-invalid-hold-opac: hsl(39, 100%, 50%, 0.25);
+        --form-color-valid-hold-opac: hsl(120, 100%, 38%, 0.25);
+        --form-color-valid-opac: hsl(120, 100%, 25%, 0.25);
+    }
 }

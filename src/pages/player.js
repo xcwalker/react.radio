@@ -134,8 +134,8 @@ export function Player() {
     return <>
         <Helmet>
             {state === "paused" && audioUrlState === "" && <title>{'ReactRadio'}</title>}
-            {state === "paused" && audioUrlState !== "" && <title>{'⏸ ' + nowPlaying?.title + ' - ' + nowPlaying?.artists + ' | ReactRadio'}</title>}
-            {state === "play" && audioUrlState !== "" && <title>{'⏵ ' + nowPlaying?.title + ' - ' + nowPlaying?.artists + ' | ReactRadio'}</title>}
+            {state === "paused" && audioUrlState !== "" && <title>{nowPlaying?.title + ' - ' + nowPlaying?.artists + ' | ReactRadio'}</title>}
+            {state === "play" && audioUrlState !== "" && <title>{nowPlaying?.title + ' - ' + nowPlaying?.artists + ' | ReactRadio'}</title>}
         </Helmet>
         <section id="player" onLoad={() => { setTicking(true) }}>
             <div className="dj">
@@ -303,19 +303,25 @@ function Timetable() {
 }
 
 function TimetableItem(props) {
-    const [date, setDate] = useState(new Date(props.slot.slotstamp * 1000));
+    const [date, setDate] = useState();
 
     function addZero(i) {
         if (i < 10) { i = "0" + i }
         return i;
     }
 
+    useEffect(() => {
+        if (!props.slot.slotstamp) return
+
+        setDate(new Date(props.slot.slotstamp * 1000))
+    }, [props.slot])
+
     return <li>
         <img src={"https://simulatorradio.com/processor/avatar?size=256&name=" + props.slot.dj.avatar} alt="" />
         <div className="info">
             <div className="inline">
                 <span className="title">{props.slot.dj.display_name}</span>
-                <span className="date">{addZero(date.getHours())}:{addZero(date.getMinutes())} - {addZero(date.getHours() + 1)}:{addZero(date.getMinutes())}</span>
+                {date && <span className="date">{addZero(date.getHours())}:{addZero(date.getMinutes())} - {addZero(date.getHours() + 1)}:{addZero(date.getMinutes())}</span>}
             </div>
             <ReactMarkdown className="subTitle">{props.slot.details.toString()}</ReactMarkdown>
         </div>
