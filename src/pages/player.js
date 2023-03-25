@@ -159,8 +159,8 @@ export function Player(props) {
             <div className="container">
                 <div className="player">
                     <div className="art" onClick={() => { stop() }}>
-                        {nowPlaying?.art.large && <img src={nowPlaying?.art.large} alt="1" />}
-                        {!nowPlaying?.art.large && <img src={nowPlaying?.art} alt="2" />}
+                        {nowPlaying?.art.large && <img src={nowPlaying?.art.large} alt="" />}
+                        {!nowPlaying?.art.large && <img src={nowPlaying?.art} alt="" />}
 
                         <svg
                             viewBox="0 0 135.47 135.47"
@@ -270,8 +270,8 @@ function History(props) {
                             return <Fragment key={index} />
                         }
                         return <li key={index}>
-                            {item.art.large && <img src={item.art.large} alt="1" />}
-                            {!item.art.large && item.art.large !== null && <img src={item.art} alt="2" />}
+                            {item.art.large && <img src={item.art.large} alt="" />}
+                            {!item.art.large && item.art.large !== null && <img src={item.art} alt="" />}
                             <div className="info">
                                 {item.artists && <span className="subTitle">{item.artists}</span>}
                                 {item.artist && <span className="subTitle">{item.artist}</span>}
