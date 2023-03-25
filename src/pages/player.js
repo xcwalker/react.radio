@@ -142,11 +142,11 @@ export function Player(props) {
 
     return <>
         <Helmet>
-            {state === "paused" && audioUrlState === "" && <title>{'ReactRadio'}</title>}
-            {state === "paused" && audioUrlState !== "" && nowPlaying?.artists && <title>{nowPlaying?.title + ' - ' + nowPlaying?.artists + ' | ReactRadio'}</title>}
-            {state === "play" && audioUrlState !== "" && nowPlaying?.artists && <title>{nowPlaying?.title + ' - ' + nowPlaying?.artists + ' | ReactRadio'}</title>}
-            {state === "paused" && audioUrlState !== "" && nowPlaying?.artist && <title>{nowPlaying?.title + ' - ' + nowPlaying?.artist + ' | ReactRadio'}</title>}
-            {state === "play" && audioUrlState !== "" && nowPlaying?.artist && <title>{nowPlaying?.title + ' - ' + nowPlaying?.artist + ' | ReactRadio'}</title>}
+            {state === "paused" && audioUrlState === "" && <title>{props.station + ' | ReactRadio'}</title>}
+            {state === "paused" && audioUrlState !== "" && nowPlaying?.artists && <title>{nowPlaying?.title + ' - ' + nowPlaying?.artists + ' | ' + props.station + ' | ReactRadio'}</title>}
+            {state === "play" && audioUrlState !== "" && nowPlaying?.artists && <title>{nowPlaying?.title + ' - ' + nowPlaying?.artists + ' | ' + props.station + ' | ReactRadio'}</title>}
+            {state === "paused" && audioUrlState !== "" && nowPlaying?.artist && <title>{nowPlaying?.title + ' - ' + nowPlaying?.artist + ' | ' + props.station + ' | ReactRadio'}</title>}
+            {state === "play" && audioUrlState !== "" && nowPlaying?.artist && <title>{nowPlaying?.title + ' - ' + nowPlaying?.artist + ' | ' + props.station + ' | ReactRadio'}</title>}
         </Helmet>
         <section id="player" onLoad={() => { setTicking(true) }}>
             {dj && <div className="dj">
