@@ -1,18 +1,16 @@
 import { Fragment, useCallback, useEffect } from "react";
 import { useState } from "react"
 import { Helmet } from "react-helmet";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import { Link } from "react-router-dom"
 
 import "../style/pages/player.css"
+import "../style/pages/switcher.css"
 import "../style/pages/history.css"
 import "../style/pages/timetable.css"
-import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import { stations } from "../App";
 
-const apiUrl = "https://apiv2.simulatorradio.com/metadata/combined"
-const apiHistoryUrl = "https://apiv2.simulatorradio.com/metadata/history?limit="
-const apiTimetableUrl = "https://apiv2.simulatorradio.com/timetable?day="
-const audioUrl = "https://simulatorradio.stream/320"
-
-export function Player() {
+export function Player(props) {
     const [dj, setDJ] = useState();
     const [nowPlaying, setNowPlaying] = useState();
     const [ticking, setTicking] = useState(true);
@@ -22,19 +20,30 @@ export function Player() {
     const [volume, setVolume] = useState(100);
 
     useEffect(() => {
-        fetch(apiUrl)
+        fetch(props.apiUrl)
             .then(
                 (data) => {
                     data.json().then(res => {
-                        setNowPlaying(res.now_playing)
-                        setDJ(res.djs.now)
+                        if (res.now_playing) {
+                            setNowPlaying(res.now_playing)
+                        } else {
+                            setNowPlaying(res)
+                        }
+                        if (res.djs) {
+                            setDJ(res.djs.now)
+                        } else {
+                            setDJ(undefined)
+                        }
                     })
                 },
                 (error) => {
                     console.error(error);
                 }
             )
-    }, [count])
+            .catch((error) => {
+                console.error(error)
+            })
+    }, [count, props.apiUrl])
 
     useEffect(() => {
         const timer = setTimeout(() => ticking && setCount(count + 1), 3000)
@@ -42,22 +51,16 @@ export function Player() {
     }, [count, ticking])
 
     function stop() {
-        if (audioUrlState === "") {
-            setAudioUrlState(audioUrl);
-            setState("play");
-            return
-        } else {
-            setAudioUrlState("");
-            setState("paused");
-            return
-        }
+        setAudioUrlState("");
+        setState("paused");
+        return
     }
 
     const playPause = useCallback(() => {
         var player = document.querySelector("#audioPlayer")
 
         if (audioUrlState === "") {
-            setAudioUrlState(audioUrl);
+            setAudioUrlState(props.audioUrl);
         }
 
         if (state === "paused") {
@@ -69,13 +72,19 @@ export function Player() {
             player.pause();
             return
         }
-    }, [audioUrlState, state])
+    }, [audioUrlState, state, props.audioUrl])
+
+    useEffect(() => {
+        setAudioUrlState("");
+        setState("paused");
+        return
+    }, [props.audioUrl])
 
     async function live() {
         var player = document.querySelector("#audioPlayer")
 
         if (audioUrlState === "") {
-            setAudioUrlState(audioUrl);
+            setAudioUrlState(props.audioUrl);
         }
 
         setState("play")
@@ -117,14 +126,14 @@ export function Player() {
 
             navigator.mediaSession.setActionHandler('play', () => {
                 console.log("play")
-                
+
                 setState("play")
                 document.querySelector("#audioPlayer").play()
             });
-            
+
             navigator.mediaSession.setActionHandler('pause', () => {
                 console.log("pause")
-                
+
                 setState("paused")
                 document.querySelector("#audioPlayer").pause()
             });
@@ -134,21 +143,24 @@ export function Player() {
     return <>
         <Helmet>
             {state === "paused" && audioUrlState === "" && <title>{'ReactRadio'}</title>}
-            {state === "paused" && audioUrlState !== "" && <title>{nowPlaying?.title + ' - ' + nowPlaying?.artists + ' | ReactRadio'}</title>}
-            {state === "play" && audioUrlState !== "" && <title>{nowPlaying?.title + ' - ' + nowPlaying?.artists + ' | ReactRadio'}</title>}
+            {state === "paused" && audioUrlState !== "" && nowPlaying?.artists && <title>{nowPlaying?.title + ' - ' + nowPlaying?.artists + ' | ReactRadio'}</title>}
+            {state === "play" && audioUrlState !== "" && nowPlaying?.artists && <title>{nowPlaying?.title + ' - ' + nowPlaying?.artists + ' | ReactRadio'}</title>}
+            {state === "paused" && audioUrlState !== "" && nowPlaying?.artist && <title>{nowPlaying?.title + ' - ' + nowPlaying?.artist + ' | ReactRadio'}</title>}
+            {state === "play" && audioUrlState !== "" && nowPlaying?.artist && <title>{nowPlaying?.title + ' - ' + nowPlaying?.artist + ' | ReactRadio'}</title>}
         </Helmet>
         <section id="player" onLoad={() => { setTicking(true) }}>
-            <div className="dj">
+            {dj && <div className="dj">
                 {dj?.avatar && <img src={"https://simulatorradio.com/processor/avatar?size=256&name=" + dj?.avatar} alt="" className="profilePicture" />}
                 <div className="about">
                     <span className="title">{dj?.displayname}</span>
                     <ReactMarkdown className="subTitle">{dj?.details}</ReactMarkdown>
                 </div>
-            </div>
+            </div>}
             <div className="container">
                 <div className="player">
                     <div className="art" onClick={() => { stop() }}>
-                        <img src={nowPlaying?.art} alt="" />
+                        {nowPlaying?.art.large && <img src={nowPlaying?.art.large} alt="1" />}
+                        {!nowPlaying?.art.large && <img src={nowPlaying?.art} alt="2" />}
 
                         <svg
                             viewBox="0 0 135.47 135.47"
@@ -165,7 +177,8 @@ export function Player() {
                     </div>
                     <div className="info">
                         <span className="title">{nowPlaying?.title}</span>
-                        <span className="subTitle">{nowPlaying?.artists}</span>
+                        {nowPlaying?.artists && <span className="subTitle">{nowPlaying?.artists}</span>}
+                        {nowPlaying?.artist && <span className="subTitle">{nowPlaying?.artist}</span>}
                     </div>
                 </div>
                 <div className="controls">
@@ -174,7 +187,8 @@ export function Player() {
                     </div>
                     <div className="info">
                         <span className="title">{nowPlaying?.title}</span>
-                        <span className="subTitle">{nowPlaying?.artists}</span>
+                        {nowPlaying?.artists && <span className="subTitle">{nowPlaying?.artists}</span>}
+                        {nowPlaying?.artist && <span className="subTitle">{nowPlaying?.artist}</span>}
                     </div>
                     <div className="center">
                         <button className="material-symbols-outlined" onClick={() => { rewind() }} disabled={document.querySelector("#audioPlayer")?.currentTime < 10} title="Rewind 10s">replay_10</button>
@@ -192,21 +206,43 @@ export function Player() {
                 </div>
             </div>
             {/* <div className="mobile"></div> */}
-            <img src={nowPlaying?.art} alt="" className="background" />
+            {nowPlaying?.art.large && <img src={nowPlaying?.art.large} alt="" className="background" />}
+            {!nowPlaying?.art.large && <img src={nowPlaying?.art} alt="" className="background" />}
         </section>
         <audio src={audioUrlState} id="audioPlayer" autoPlay="autoplay" crossOrigin="anonymous" />
-        <History />
-        <Timetable />
+        <Switcher station={props.station} />
+        {props.apiHistoryUrl && <History apiHistoryUrl={props.apiHistoryUrl} />}
+        {props.apiTimetableUrl && <Timetable apiTimetableUrl={props.apiTimetableUrl} />}
     </>
 }
 
-function History() {
+function Switcher(props) {
+    return <>
+        <section id="switcher">
+            <div className="container">
+                <h2>Switch Station</h2>
+                <ul>
+                    {stations && stations.map((item, index) => {
+                        if (item.station === props.station) return <li key={index}>
+                            <span className="current" title="Current Station">{item.station}</span>
+                        </li>
+                        return <li key={index}>
+                            <Link to={item.url}>{item.station}</Link>
+                        </li>
+                    })}
+                </ul>
+            </div>
+        </section>
+    </>
+}
+
+function History(props) {
     const [history, setHistory] = useState();
     const [ticking, setTicking] = useState(true);
     const [count, setCount] = useState(0);
 
     useEffect(() => {
-        fetch(apiHistoryUrl + "7")
+        fetch(props.apiHistoryUrl + "7")
             .then(
                 (data) => {
                     data.json().then(res => {
@@ -217,7 +253,7 @@ function History() {
                     console.error(error);
                 }
             )
-    }, [count])
+    }, [count, props.apiHistoryUrl])
 
     useEffect(() => {
         const timer = setTimeout(() => ticking && setCount(count + 1), 3000)
@@ -234,9 +270,11 @@ function History() {
                             return <Fragment key={index} />
                         }
                         return <li key={index}>
-                            <img src={item.art} alt="" />
+                            {item.art.large && <img src={item.art.large} alt="1" />}
+                            {!item.art.large && item.art.large !== null && <img src={item.art} alt="2" />}
                             <div className="info">
-                                <span className="subTitle">{item.artists}</span>
+                                {item.artists && <span className="subTitle">{item.artists}</span>}
+                                {item.artist && <span className="subTitle">{item.artist}</span>}
                                 <span className="title">{item.title}</span>
                             </div>
                         </li>
@@ -247,7 +285,7 @@ function History() {
     </>
 }
 
-function Timetable() {
+function Timetable(props) {
     const [displayDate, setDisplayDate] = useState(new Date());
     const [timetable, setTimetable] = useState();
     const [ticking, setTicking] = useState(true);
@@ -255,7 +293,7 @@ function Timetable() {
     const [dayIndex, setDayIndex] = useState(0);
 
     useEffect(() => {
-        fetch(apiTimetableUrl + dayIndex)
+        fetch(props.apiTimetableUrl + dayIndex)
             .then(
                 (data) => {
                     data.json().then(res => {
@@ -266,7 +304,7 @@ function Timetable() {
                     console.error(error);
                 }
             )
-    }, [count, dayIndex])
+    }, [count, dayIndex, props.apiTimetableUrl])
 
     useEffect(() => {
         const timer = setTimeout(() => ticking && setCount(count + 1), 20000)

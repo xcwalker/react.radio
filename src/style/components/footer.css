@@ -75,7 +75,7 @@
 
 #root>footer .container section a[type="link"]:active {
     color: var(--background-color-100);
-    border-color: currentColor;
+    border-color: var(--foreground-color-300);
     background-color: var(--foreground-color-300);
 }
 

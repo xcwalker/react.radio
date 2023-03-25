@@ -1,0 +1,102 @@
+/**** Switcher ****/
+section#switcher {
+    /* position */
+    position: relative;
+
+    /* sizing */
+    width: 100%;
+}
+
+section#switcher .container {
+    /* sizing */
+    height: 100%;
+    width: 100%;
+    padding: var(--header-style-padding);
+
+    /* flex */
+    display: flex;
+    flex-direction: column;
+    gap: var(--default-padding);
+}
+
+section#switcher .container h2 {
+    /* text */
+    text-align: center;
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+section#switcher .container ul {
+    /* pacing */
+    padding: 0;
+    margin: 0;
+
+    /* grid */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--default-padding);
+}
+
+section#switcher .container ul li {
+    /* flex */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section#switcher .container ul li span.current {
+    /* sizing */
+    padding: 4px 10px;
+
+    /* text */
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+
+    /* styling */
+    color: white;
+    background-color: red;
+    border-radius: 4px;
+    border: 2px solid red;
+
+    /* no-select */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+section#switcher .container ul li a {
+    /* sizing */
+    padding: 4px 10px;
+
+    /* text */
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    /* styling */
+    color: var(--background-color-200);
+    background-color: var(--foreground-color-200);
+    border-radius: 4px;
+    border: 2px solid transparent;
+}
+
+section#switcher .container ul li a:hover,
+section#switcher .container ul li a:focus {
+    color: var(--foreground-color-200);
+    border-color: currentColor;
+    background-color: transparent;
+    outline: none;
+}
+
+section#switcher .container ul li a:active {
+    color: var(--foreground-color-200);
+    border-color: var(--background-color-200);
+    background-color: var(--background-color-200);
+}
