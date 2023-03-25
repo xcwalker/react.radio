@@ -1,11 +1,13 @@
+import { BrowserRouter, Route, Routes, Navigate, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import { Helmet } from "react-helmet";
+
 import { Footer } from "./components/footer";
 import { Player } from "./pages/player";
 
 import "./style/defaults/variables.css"
 import "./style/defaults/page-setup.css"
 import "./style/defaults/transitions.css"
-import { BrowserRouter, Route, Routes, Navigate, useLocation } from "react-router-dom";
 
 export default function App() {
   return <>
