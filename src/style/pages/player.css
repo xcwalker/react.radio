@@ -453,6 +453,7 @@ section#player .container .controls .info {
         /* grid */
         display: grid;
         grid-template-columns: 1fr 1fr;
+        grid-template-rows: 100%;
     }
 
     section#player .container .player .art {
