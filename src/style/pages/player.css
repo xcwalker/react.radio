@@ -138,8 +138,8 @@ section#player .container .player .art img {
     /* position */
     position: relative;
     z-index: 1;
+    
     /* sizing */
-    height: 100%;
     width: 100%;
 
     /* styling */

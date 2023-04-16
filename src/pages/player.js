@@ -24,16 +24,47 @@ export function Player(props) {
             .then(
                 (data) => {
                     data.json().then(res => {
-                        if (res.now_playing) {
-                            setNowPlaying(res.now_playing)
+                        let outNow = {};
+                        let outDJ = {};
+
+                        if (res.now_playing.title) {
+                            outNow.title = res.now_playing.title
+                        } else if (res.title) {
+                            outNow.title = res.title
                         } else {
-                            setNowPlaying(res)
+                            outNow.title = ""
                         }
-                        if (res.djs) {
-                            setDJ(res.djs.now)
+
+                        if (res.now_playing.artists) {
+                            outNow.artists = res.now_playing.artists
+                        } else if (res.artist) {
+                            outNow.artists = res.artist
                         } else {
-                            setDJ(undefined)
+                            outNow.artists = ""
                         }
+
+                        if (res.now_playing.art) {
+                            outNow.art = res.now_playing.art
+                        } else if (res.art.large) {
+                            outNow.art = res.art.large
+                        } else {
+                            outNow.art = ""
+                        }
+
+                        if (res.djs.now.displayname) {
+                            outDJ.displayname = res.djs.now.displayname
+                        }
+
+                        if (res.djs.now.avatar) {
+                            outDJ.avatar = res.djs.now.avatar
+                        }
+
+                        if (res.djs.now.details) {
+                            outDJ.details = res.djs.now.details
+                        }
+
+                        setNowPlaying(outNow)
+                        setDJ(outDJ)
                     })
                 },
                 (error) => {
@@ -142,15 +173,16 @@ export function Player(props) {
 
     return <>
         <Helmet>
+            <meta name="twitter:title" content={props.station + ' | ReactRadio'} />
             {state === "paused" && audioUrlState === "" && <title>{props.station + ' | ReactRadio'}</title>}
             {state === "paused" && audioUrlState !== "" && nowPlaying?.artists && <title>{nowPlaying?.title + ' - ' + nowPlaying?.artists + ' | ' + props.station + ' | ReactRadio'}</title>}
             {state === "play" && audioUrlState !== "" && nowPlaying?.artists && <title>{nowPlaying?.title + ' - ' + nowPlaying?.artists + ' | ' + props.station + ' | ReactRadio'}</title>}
-            {state === "paused" && audioUrlState !== "" && nowPlaying?.artist && <title>{nowPlaying?.title + ' - ' + nowPlaying?.artist + ' | ' + props.station + ' | ReactRadio'}</title>}
-            {state === "play" && audioUrlState !== "" && nowPlaying?.artist && <title>{nowPlaying?.title + ' - ' + nowPlaying?.artist + ' | ' + props.station + ' | ReactRadio'}</title>}
+            <meta name="description" content={props.station + " on ReactRadio | A lightweight react based website for streaming radio."} />
+            <meta name="twitter:description" content={props.station + " on ReactRadio | A lightweight react based website for streaming radio."} />
         </Helmet>
         <section id="player" onLoad={() => { setTicking(true) }}>
             {dj && <div className="dj">
-                {dj?.avatar && <img src={"https://simulatorradio.com/processor/avatar?size=256&name=" + dj?.avatar} alt="" className="profilePicture" />}
+                {dj?.avatar && <img src={"https://simulatorradio.com/processor/avatar?size=256&name=" + dj?.avatar} alt={dj?.avatar + "'s avatar"} className="profilePicture" />}
                 <div className="about">
                     <span className="title">{dj?.displayname}</span>
                     <ReactMarkdown className="subTitle">{dj?.details}</ReactMarkdown>
@@ -159,8 +191,7 @@ export function Player(props) {
             <div className="container">
                 <div className="player">
                     <div className="art" onClick={() => { stop() }}>
-                        {nowPlaying?.art.large && <img src={nowPlaying?.art.large} alt="" />}
-                        {!nowPlaying?.art.large && <img src={nowPlaying?.art} alt="" />}
+                        <img src={nowPlaying?.art} alt={"The artwork of " + nowPlaying?.title + " by " + nowPlaying?.artists} />
 
                         <svg
                             viewBox="0 0 135.47 135.47"
@@ -177,8 +208,7 @@ export function Player(props) {
                     </div>
                     <div className="info">
                         <span className="title">{nowPlaying?.title}</span>
-                        {nowPlaying?.artists && <span className="subTitle">{nowPlaying?.artists}</span>}
-                        {nowPlaying?.artist && <span className="subTitle">{nowPlaying?.artist}</span>}
+                        <span className="subTitle">{nowPlaying?.artists}</span>
                     </div>
                 </div>
                 <div className="controls">
@@ -187,8 +217,7 @@ export function Player(props) {
                     </div>
                     <div className="info">
                         <span className="title">{nowPlaying?.title}</span>
-                        {nowPlaying?.artists && <span className="subTitle">{nowPlaying?.artists}</span>}
-                        {nowPlaying?.artist && <span className="subTitle">{nowPlaying?.artist}</span>}
+                        <span className="subTitle">{nowPlaying?.artists}</span>
                     </div>
                     <div className="center">
                         <button className="material-symbols-outlined" onClick={() => { rewind() }} disabled={document.querySelector("#audioPlayer")?.currentTime < 10} title="Rewind 10s">replay_10</button>
@@ -206,8 +235,7 @@ export function Player(props) {
                 </div>
             </div>
             {/* <div className="mobile"></div> */}
-            {nowPlaying?.art.large && <img src={nowPlaying?.art.large} alt="" className="background" />}
-            {!nowPlaying?.art.large && <img src={nowPlaying?.art} alt="" className="background" />}
+            <img src={nowPlaying?.art} alt="" className="background" />
         </section>
         <audio src={audioUrlState} id="audioPlayer" autoPlay="autoplay" crossOrigin="anonymous" />
         <Switcher station={props.station} />
@@ -224,7 +252,7 @@ function Switcher(props) {
                 <ul>
                     {stations && stations.map((item, index) => {
                         if (item.station === props.station) return <li key={index}>
-                            <span className="current" title="Current Station">{item.station}</span>
+                            <h1 className="current" title="Current Station">{item.station}</h1>
                         </li>
                         return <li key={index}>
                             <Link to={item.url}>{item.station}</Link>

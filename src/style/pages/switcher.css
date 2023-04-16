@@ -46,8 +46,9 @@ section#switcher .container ul li {
     align-items: center;
 }
 
-section#switcher .container ul li span.current {
+section#switcher .container ul li h1.current {
     /* sizing */
+    margin: 0;
     padding: 4px 10px;
 
     /* text */

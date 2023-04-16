@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1920"
+   height="1080"
+   viewBox="0 0 508 285.75"
+   version="1.1"
+   id="svg5"
+   inkscape:export-filename="C:\Users\Xander\.vscode\Github\react.radio\public\banner-small.png"
+   inkscape:export-xdpi="60"
+   inkscape:export-ydpi="60"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   sodipodi:docname="banner.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="0.59010417"
+     inkscape:cx="941.35922"
+     inkscape:cy="761.72992"
+     inkscape:window-width="2560"
+     inkscape:window-height="1537"
+     inkscape:window-x="992"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#ffffff;stroke-width:26.4583;stroke-linecap:round;stroke-dashoffset:42;fill-opacity:1"
+       id="rect846"
+       width="508"
+       height="285.75"
+       x="0"
+       y="-285.75"
+       transform="scale(1,-1)" />
+    <g
+       id="g4995"
+       transform="matrix(1.1192499,0,0,1.1192499,165.63671,65.024495)">
+      <path
+         id="path3352"
+         style="font-weight:800;font-size:7.454px;line-height:1.25;font-family:Montserrat;-inkscape-font-specification:'Montserrat Ultra-Bold';fill:#db2763;fill-opacity:1;stroke-width:13.0672"
+         d="m 187.53317,134.04102 v 57.42968 h 175.02152 40.49609 c 15.21642,0 26.5064,3.31101 33.86914,9.9375 7.60823,6.62649 11.41211,15.95462 11.41211,27.98047 0,11.78044 -3.80388,20.98288 -11.41211,27.60938 -7.36274,6.62648 -18.65272,9.93945 -33.86914,9.93945 H 362.55469 187.53317 v 56.32617 h 175.02152 39.79101 l 46.72266,68.47266 h 78.04492 L 471.5,310.69922 c 15.59116,-7.50192 27.74865,-17.79193 36.4707,-30.875 9.32618,-14.23469 13.98828,-31.04692 13.98828,-50.43555 0,-19.63405 -4.6621,-36.57 -13.98828,-50.80469 -9.32617,-14.48011 -22.57996,-25.52265 -39.75976,-33.13086 -16.93436,-7.60819 -37.1813,-11.4121 -60.74219,-11.4121 z"
+         transform="scale(0.26458334)"
+         sodipodi:nodetypes="cccscscscccccccccsccsc" />
+      <path
+         id="path3352-7"
+         style="font-weight:800;font-size:7.454px;line-height:1.25;font-family:Montserrat;-inkscape-font-specification:'Montserrat Ultra-Bold';fill:#db2763;fill-opacity:1;stroke-width:3.45736"
+         d="M 18.43195,35.465021 V 50.659957 H 37.717596 48.43218 c 4.026017,0 7.013157,0.876038 8.961217,2.629297 2.013007,1.753259 3.019447,4.221327 3.019447,7.403166 0,3.116909 -1.00644,5.551721 -3.019447,7.304982 -1.94806,1.753257 -4.9352,2.629813 -8.961217,2.629813 H 37.717596 18.43195 V 85.530182 H 37.717596 48.24563 L 60.607664,103.6469 H 81.257042 L 66.542701,82.205837 c 4.125157,-1.984883 7.341824,-4.707448 9.649534,-8.16901 2.46755,-3.766262 3.701057,-8.214498 3.701057,-13.344407 0,-5.194842 -1.233507,-9.675812 -3.701057,-13.442074 -2.46755,-3.831196 -5.974277,-6.752868 -10.519764,-8.765874 -4.480547,-2.013 -9.837544,-3.019451 -16.071361,-3.019451 z"
+         sodipodi:nodetypes="cccscscscccccccccsccsc" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-weight:600;font-size:7.454px;line-height:1.25;font-family:Montserrat;-inkscape-font-specification:'Montserrat Semi-Bold';stroke-width:0.264583"
+       x="208.35043"
+       y="277.76044"
+       id="text1771"><tspan
+         sodipodi:role="line"
+         id="tspan1769"
+         style="stroke-width:0.264583"
+         x="208.35043"
+         y="277.76044">reactradio.xcwalker.dev</tspan></text>
+  </g>
+</svg>

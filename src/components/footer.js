@@ -4,7 +4,7 @@ export function Footer() {
     return <footer id="page-footer">
         <div className="container">
             <section>
-                <a href="https://www.xcwalker.dev" type="svg">
+                <a href="https://www.xcwalker.dev" type="svg" aria-label="Link to xcwalker.dev">
                     <svg
                         viewBox="0 0 135.47 35.487"
                         xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@ export function Footer() {
                         </g>
                     </svg>
                 </a>
-                <a href="https://www.simulatorradio.com" type="svg">
+                <a href="https://simulatorradio.com" type="svg" aria-label="Link to simulatorradio.com">
                     <svg
                         viewBox="0 0 813.43 63.19"
                         xmlns="http://www.w3.org/2000/svg"

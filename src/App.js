@@ -11,10 +11,6 @@ import "./style/defaults/transitions.css"
 
 export default function App() {
   return <>
-    <Helmet>
-      <title>ReactRadio</title>
-    </Helmet>
-
     <BrowserRouter>
       <ScrollToTop />
 
