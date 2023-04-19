@@ -27,39 +27,39 @@ export function Player(props) {
                         let outNow = {};
                         let outDJ = {};
 
-                        if (res.now_playing.title) {
-                            outNow.title = res.now_playing.title
+                        if (res?.now_playing?.title) {
+                            outNow.title = res?.now_playing?.title
                         } else if (res.title) {
                             outNow.title = res.title
                         } else {
                             outNow.title = ""
                         }
 
-                        if (res.now_playing.artists) {
-                            outNow.artists = res.now_playing.artists
+                        if (res?.now_playing?.artists) {
+                            outNow.artists = res?.now_playing?.artists
                         } else if (res.artist) {
                             outNow.artists = res.artist
                         } else {
                             outNow.artists = ""
                         }
 
-                        if (res.now_playing.art) {
-                            outNow.art = res.now_playing.art
+                        if (res?.now_playing?.art) {
+                            outNow.art = res?.now_playing?.art
                         } else if (res.art.large) {
                             outNow.art = res.art.large
                         } else {
                             outNow.art = ""
                         }
 
-                        if (res.djs.now.displayname) {
+                        if (res?.djs?.now?.displayname) {
                             outDJ.displayname = res.djs.now.displayname
                         }
 
-                        if (res.djs.now.avatar) {
+                        if (res?.djs?.now?.avatar) {
                             outDJ.avatar = res.djs.now.avatar
                         }
 
-                        if (res.djs.now.details) {
+                        if (res?.djs?.now?.details) {
                             outDJ.details = res.djs.now.details
                         }
 
