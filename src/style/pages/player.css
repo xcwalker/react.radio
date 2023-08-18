@@ -180,7 +180,7 @@ section#player .container .player .art svg {
     color: inherit;
 
     /* transition */
-    transform: opacity var(--transition-duration-400) var(--transition-method-default);
+    transition: opacity var(--transition-duration-400) var(--transition-method-default);
 }
 
 section#player .container .player .art:hover svg {
