@@ -59,6 +59,7 @@ section#player .dj img.profilePicture {
     --size: 50px;
     width: var(--size);
     height: var(--size);
+    flex-shrink: 0;
 
     /* image */
     object-fit: cover;
@@ -130,8 +131,15 @@ section#player .container .player .art {
     aspect-ratio: 1/1;
     flex-shrink: 0;
 
+    /* flex */
+    display: flex;
+
     /* styling */
     cursor: pointer;
+    border-radius: calc(var(--border-radius) * 4);
+    outline: 2px solid currentColor;
+    outline-offset: -3px;
+    backdrop-filter: blur(15px) brightness(50%);
 }
 
 section#player .container .player .art img {
@@ -142,11 +150,19 @@ section#player .container .player .art img {
     /* sizing */
     width: 100%;
 
+    /* flex */
+    display: flex;
+    justify-content: center;
+
     /* styling */
     border-radius: calc(var(--border-radius) * 4);
 
     /* transition */
     transition: filter var(--transition-duration-400) var(--transition-method-default);
+}
+
+section#player .container .player .art img::before {
+    display: none;
 }
 
 section#player .container .player .art svg {
@@ -157,7 +173,11 @@ section#player .container .player .art svg {
     translate: -50% -50%;
 
     /* sizing */
-    width: 65%;
+    width: 35%;
+
+    /* styling */
+    fill: currentColor;
+    color: inherit;
 
     /* transition */
     transform: opacity var(--transition-duration-400) var(--transition-method-default);
