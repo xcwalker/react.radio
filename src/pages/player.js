@@ -334,7 +334,7 @@ export function Player(props) {
           </div>
         </div>
         {/* <div className="mobile"></div> */}
-        <img src={nowPlaying?.art} alt="" className="background" />
+        <img src={nowPlaying?.art} alt="" className="background animated" />
       </section>
       <audio src={audioUrlState} id="audioPlayer" autoPlay="autoplay" crossOrigin="anonymous" />
       <Switcher station={props.station} />
