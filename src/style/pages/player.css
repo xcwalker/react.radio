@@ -46,8 +46,8 @@ section#player img.background {
   /* styles to apply if a user's device settings are set to reduced motion */
   section#player img.background.animated {
     /* sizing */
-    height: 200svh;
-    width: 200svw;
+    height: 150svh;
+    width: 150svw;
 
     /* animation */
     animation: backgroundAnimated 120s forwards infinite linear;
@@ -81,15 +81,15 @@ section#player img.background {
     }
 
     25% {
-      translate: -100svw 0svh;
+      translate: -50svw 0svh;
     }
 
       50% {
-        translate: -100svw -100svh;
+        translate: -50svw -50svh;
     }
 
     75% {
-      translate: 0svw -100svh;
+      translate: 0svw -50svh;
     }
   }
 
