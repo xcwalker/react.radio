@@ -50,11 +50,11 @@ section#player img.background {
     width: 200svw;
 
     /* animation */
-    animation: backgroundAnimated 180s forwards infinite linear;
+    animation: backgroundAnimated 120s forwards infinite linear;
 
     /* styling */
     object-fit: cover;
-    filter: blur(2.5svmax) brightness(75%);
+    filter: blur(100px) brightness(65%);
   }
 }
 
