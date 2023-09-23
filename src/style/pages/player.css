@@ -46,13 +46,14 @@ section#player img.background {
   /* styles to apply if a user's device settings are set to reduced motion */
   section#player img.background.animated {
     /* sizing */
-    height: 150svmax;
-    width: 150svmax;
+    height: 200svh;
+    width: 200svw;
 
     /* animation */
-    animation: backgroundAnimated 180s forwards infinite;
+    animation: backgroundAnimated 180s forwards infinite linear;
 
     /* styling */
+    object-fit: cover;
     filter: blur(2.5svmax) brightness(75%);
   }
 }
@@ -74,45 +75,23 @@ section#player img.background {
   }
 }
 
-@media (orientation: landscape) {
   @keyframes backgroundAnimated {
     0% {
-      translate: 0svmax 0svmax;
+      translate: 0svw 0svh;
     }
 
     25% {
-      translate: -50svmax 0svmax;
+      translate: -100svw 0svh;
     }
 
-    50% {
-      translate: -50svmax -100svmax;
-    }
-
-    75% {
-      translate: 0svmax -100svmax;
-    }
-  }
-}
-
-@media (orientation: portrait) {
-  @keyframes backgroundAnimated {
-    0% {
-      translate: 0svmax 0svmax;
-    }
-
-    25% {
-      translate: -100svmax 0svmax;
-    }
-
-    50% {
-      translate: -100svmax -50svmax;
+      50% {
+        translate: -100svw -100svh;
     }
 
     75% {
-      translate: 0svmax -50svmax;
+      translate: 0svw -100svh;
     }
   }
-}
 
 /*** DJ ***/
 section#player .dj {

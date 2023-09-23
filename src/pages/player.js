@@ -29,42 +29,69 @@ export function Player(props) {
 
             if (res?.now_playing?.title) {
               outNow.title = res?.now_playing?.title;
-            } else if (res.title) {
+            } else if (res?.title) {
               outNow.title = res.title;
+            } else if (res?.data?.title) {
+              outNow.title = res.data.title;
             } else {
               outNow.title = "";
             }
 
             if (res?.now_playing?.artists) {
               outNow.artists = res?.now_playing?.artists;
-            } else if (res.artist) {
+            } else if (res?.artist) {
               outNow.artists = res.artist;
+            } else if (res?.data?.artist) {
+              outNow.artists = res.data.artist;
             } else {
               outNow.artists = "";
             }
 
             if (res?.now_playing?.art) {
               outNow.art = res?.now_playing?.art;
-            } else if (res.art.large) {
+            } else if (res?.art?.large) {
               outNow.art = res.art.large;
+            } else if (res?.data?.album_art) {
+              outNow.art = res.data.album_art;
             } else {
               outNow.art = "";
             }
 
-            if (res?.djs?.now?.displayname) {
-              outDJ.displayname = res.djs.now.displayname;
-            }
+            if (!props.apiLive) {
+              if (res?.djs?.now?.displayname) {
+                outDJ.displayname = res.djs.now.displayname;
+              }
 
-            if (res?.djs?.now?.avatar) {
-              outDJ.avatar = res.djs.now.avatar;
-            }
+              if (res?.djs?.now?.avatar) {
+                outDJ.avatar = res.djs.now.avatar;
+              }
 
-            if (res?.djs?.now?.details) {
-              outDJ.details = res.djs.now.details;
+              if (res?.djs?.now?.details) {
+                outDJ.details = res.djs.now.details;
+              }
+
+              setDJ(outDJ);
+            } else {
+              fetch(props.apiLive).then((data) => {
+                data.json().then((res) => {
+                  if (res?.data?.user?.name) {
+                    outDJ.displayname = res.data.user.name;
+                  }
+
+                  if (res?.data?.image) {
+                    outDJ.avatar = res.data.image;
+                  }
+
+                  if (res?.data?.description) {
+                    outDJ.details = res.data.description;
+                  }
+
+                  setDJ(outDJ);
+                });
+              });
             }
 
             setNowPlaying(outNow);
-            setDJ(outDJ);
           });
         },
         (error) => {
@@ -74,7 +101,7 @@ export function Player(props) {
       .catch((error) => {
         console.error(error);
       });
-  }, [count, props.apiUrl]);
+  }, [count, props.apiUrl, props.apiLive]);
 
   useEffect(() => {
     const timer = setTimeout(() => ticking && setCount(count + 1), 3000);
@@ -193,9 +220,10 @@ export function Player(props) {
       >
         {dj && (
           <div className="dj">
-            {dj?.avatar && (
+            {dj?.avatar && !props.apiLive && (
               <img src={"https://simulatorradio.com/processor/avatar?size=256&name=" + dj?.avatar} alt={dj?.avatar + "'s avatar"} className="profilePicture" />
             )}
+            {dj?.avatar && props.apiLive && <img src={dj?.avatar} alt={dj?.avatar + "'s avatar"} className="profilePicture" />}
             <div className="about">
               <span className="title">{dj?.displayname}</span>
               <ReactMarkdown className="subTitle">{dj?.details}</ReactMarkdown>
@@ -383,7 +411,11 @@ function History(props) {
     fetch(props.apiHistoryUrl + "7").then(
       (data) => {
         data.json().then((res) => {
-          setHistory(res);
+          if (res.length) {
+            setHistory(res);
+          } else if (res?.data) {
+            setHistory(res.data);
+          }
         });
       },
       (error) => {
@@ -410,8 +442,9 @@ function History(props) {
                 }
                 return (
                   <li key={index}>
-                    {item.art.large && <img src={item.art.large} alt="" />}
-                    {!item.art.large && item.art.large !== null && <img src={item.art} alt="" />}
+                    {item?.album_art && <img src={item.album_art} alt="" />}
+                    {item?.art?.large && <img src={item.art.large} alt="" />}
+                    {!item?.art?.large && item?.art?.large !== null && <img src={item.art} alt="" />}
                     <div className="info">
                       {item.artists && <span className="subTitle">{item.artists}</span>}
                       {item.artist && <span className="subTitle">{item.artist}</span>}
