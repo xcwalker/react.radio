@@ -54,7 +54,7 @@ section#player img.background {
 
     /* styling */
     object-fit: cover;
-    filter: blur(100px) brightness(65%);
+    filter: blur(50px) brightness(65%);
   }
 }
 
