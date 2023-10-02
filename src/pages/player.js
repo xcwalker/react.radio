@@ -209,7 +209,7 @@ export function Player(props) {
 
   return (
     <>
-      <Helmet>
+      <Helmet defer={false}>
         <meta name="twitter:title" content={props.station + " | ReactRadio"} />
         {state === "paused" && audioUrlState === "" && <title>{props.station + " | ReactRadio"}</title>}
         {state === "paused" && audioUrlState !== "" && nowPlaying?.artists && (
