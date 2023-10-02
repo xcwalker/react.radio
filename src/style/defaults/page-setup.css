@@ -22,6 +22,11 @@ body {
   transition: var(--transition-background_color-600), var(--transition-color-600);
 }
 
+body.oled {
+  background-color: black;
+  color: white;
+}
+
 html {
   scroll-behavior: smooth;
 }

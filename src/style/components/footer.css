@@ -6,6 +6,12 @@
     background-color: var(--background-color-200);
 }
 
+/* OLED */
+body.oled #root>footer {
+    background-color: black;
+    border-top: 2px solid var(--background-color-100);
+}
+
 #root>footer .container {
     column-count: auto;
     column-width: 250px;
@@ -66,9 +72,17 @@
     border: 2px solid transparent;
 }
 
+
+
+/* OLED */
+body.oled #root>footer .container section a[type="link"] {
+    background-color: black;
+    border: 2px solid var(--background-color-100);
+}
+
 #root>footer .container section a[type="link"]:hover,
 #root>footer .container section a[type="link"]:focus {
-    border-color: currentColor;
+    border-color: currentColor !important;
     background-color: transparent;
     outline: none;
 }

@@ -18,6 +18,23 @@ html
     --dnu-dark-color-500: hsl(0, 0%, 31%);
 }
 
+html body.oled {
+    /** colors **/
+        /* foreground */
+        --foreground-color-100: var(--dnu-light-color-100);
+        --foreground-color-200: var(--dnu-light-color-200);
+        --foreground-color-300: var(--dnu-light-color-300);
+        --foreground-color-400: var(--dnu-light-color-400);
+        --foreground-color-500: var(--dnu-light-color-500);
+
+        /* background */
+        --background-color-100: var(--dnu-dark-color-100);
+        --background-color-200: var(--dnu-dark-color-200);
+        --background-color-300: var(--dnu-dark-color-300);
+        --background-color-400: var(--dnu-dark-color-400);
+        --background-color-500: var(--dnu-dark-color-500); 
+}
+
 html
 
 /* padding */

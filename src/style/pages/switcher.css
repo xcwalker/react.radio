@@ -88,10 +88,17 @@ section#switcher .container ul li a {
     border: 2px solid transparent;
 }
 
+/* OLED */
+body.oled section#switcher .container ul li a {
+    background-color: transparent;
+    border-color: var(--background-color-100);
+    color: var(--foreground-color-100);
+}
+
 section#switcher .container ul li a:hover,
 section#switcher .container ul li a:focus {
     color: var(--foreground-color-200);
-    border-color: currentColor;
+    border-color: currentColor !important;
     background-color: transparent;
     outline: none;
 }

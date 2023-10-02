@@ -89,6 +89,14 @@ section#timetable .container ul li {
     background-color: var(--background-color-200);
 }
 
+/* OLED */
+body.oled section#timetable .container ul li {
+    background-color: transparent;
+    --_outline-width: 3px;
+    outline: var(--_outline-width) solid var(--background-color-100);
+    outline-offset: calc(-1 * var(--_outline-width));
+}
+
 section#timetable .container ul li img {
     /* sizing */
     --size: 75px;

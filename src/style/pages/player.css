@@ -75,23 +75,28 @@ section#player img.background {
   }
 }
 
-  @keyframes backgroundAnimated {
-    0% {
-      translate: 0svw 0svh;
-    }
-
-    25% {
-      translate: -50svw 0svh;
-    }
-
-      50% {
-        translate: -50svw -50svh;
-    }
-
-    75% {
-      translate: 0svw -50svh;
-    }
+@keyframes backgroundAnimated {
+  0% {
+    translate: 0svw 0svh;
   }
+
+  25% {
+    translate: -50svw 0svh;
+  }
+
+  50% {
+    translate: -50svw -50svh;
+  }
+
+  75% {
+    translate: 0svw -50svh;
+  }
+}
+
+/*** Player Background OLED ***/
+body.oled section#player img.background {
+  opacity: 0;
+}
 
 /*** DJ ***/
 section#player .dj {

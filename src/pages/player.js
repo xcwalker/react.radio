@@ -2,7 +2,7 @@ import { Fragment, useCallback, useEffect } from "react";
 import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 import "../style/pages/player.css";
 import "../style/pages/switcher.css";
@@ -11,6 +11,7 @@ import "../style/pages/timetable.css";
 import { stations } from "../App";
 
 export function Player(props) {
+  const [params, setParams] = useSearchParams();
   const [dj, setDJ] = useState();
   const [nowPlaying, setNowPlaying] = useState();
   const [ticking, setTicking] = useState(true);
@@ -18,6 +19,14 @@ export function Player(props) {
   const [audioUrlState, setAudioUrlState] = useState("");
   const [state, setState] = useState("paused");
   const [volume, setVolume] = useState(100);
+
+  useEffect(() => {
+    if (params.get("oled") !== null) {
+      document.body.classList.add("oled")
+    } else if (document.body.classList.contains("oled")) {
+      document.body.classList.remove("oled");
+    }
+  }, [params])
 
   useEffect(() => {
     fetch(props.apiUrl)
