@@ -58,7 +58,8 @@ body.oled #root>footer {
     color: inherit;
 }
 
-#root>footer .container section a[type="link"] {
+#root>footer .container section a[type="link"],
+#root>footer .container section button {
     /* sizing */
     width: 100%;
     padding: var(--default-padding);
@@ -79,19 +80,23 @@ body.oled #root>footer {
 
 
 /* OLED */
-body.oled #root>footer .container section a[type="link"] {
+body.oled #root>footer .container section a[type="link"],
+body.oled #root>footer .container section button {
     background-color: black;
     border: 2px solid var(--background-color-100);
 }
 
 #root>footer .container section a[type="link"]:hover,
-#root>footer .container section a[type="link"]:focus {
+#root>footer .container section a[type="link"]:focus,
+#root>footer .container section button:hover,
+#root>footer .container section button:focus {
     border-color: currentColor !important;
     background-color: transparent;
     outline: none;
 }
 
-#root>footer .container section a[type="link"]:active {
+#root>footer .container section a[type="link"]:active,
+#root>footer .container section button:active {
     color: var(--background-color-100);
     border-color: var(--foreground-color-300);
     background-color: var(--foreground-color-300);
