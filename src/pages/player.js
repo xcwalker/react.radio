@@ -22,11 +22,11 @@ export function Player(props) {
 
   useEffect(() => {
     if (params.get("oled") !== null) {
-      document.body.classList.add("oled")
+      document.body.classList.add("oled");
     } else if (document.body.classList.contains("oled")) {
       document.body.classList.remove("oled");
     }
-  }, [params])
+  }, [params]);
 
   useEffect(() => {
     fetch(props.apiUrl)
@@ -400,7 +400,7 @@ function Switcher(props) {
                   );
                 return (
                   <li key={index}>
-                    <Link to={item.url}>{item.station}</Link>
+                    <Link to={item.url + (document.body.classList.contains("oled") ? "?oled" : "")}>{item.station}</Link>
                   </li>
                 );
               })}
@@ -412,11 +412,21 @@ function Switcher(props) {
 }
 
 function History(props) {
+  const [api, setAPI] = useState();
   const [history, setHistory] = useState();
   const [ticking, setTicking] = useState(true);
   const [count, setCount] = useState(0);
 
   useEffect(() => {
+    setAPI((url) => {
+      if (props.apiHistoryUrl === url) {
+        setHistory();
+        return props.apiHistoryUrl;
+      } else {
+        return url
+      }
+    });
+
     fetch(props.apiHistoryUrl + "7").then(
       (data) => {
         data.json().then((res) => {
@@ -431,7 +441,7 @@ function History(props) {
         console.error(error);
       }
     );
-  }, [count, props.apiHistoryUrl]);
+  }, [count, props.apiHistoryUrl, api]);
 
   useEffect(() => {
     const timer = setTimeout(() => ticking && setCount(count + 1), 3000);

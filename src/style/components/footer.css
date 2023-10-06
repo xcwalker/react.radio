@@ -4,12 +4,16 @@
 
     /* styling */
     background-color: var(--background-color-200);
+    border-top: 2px solid transparent;
+
+    /* transition */
+    transition: var(--transition-background_color-600), var(--transition-color-600);
 }
 
 /* OLED */
 body.oled #root>footer {
     background-color: black;
-    border-top: 2px solid var(--background-color-100);
+    border-top-color: var(--background-color-100);
 }
 
 #root>footer .container {

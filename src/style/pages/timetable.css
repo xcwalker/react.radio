@@ -87,14 +87,18 @@ section#timetable .container ul li {
     /* styling */
     border-radius: 10px;
     background-color: var(--background-color-200);
+    --_outline-width: 3px;
+    outline: var(--_outline-width) solid transparent;
+    outline-offset: calc(-1 * var(--_outline-width));
+
+    /* transition */
+    transition: var(--transition-background_color-600), var(--transition-color-600), var(--transition-outline-600);
 }
 
 /* OLED */
 body.oled section#timetable .container ul li {
     background-color: transparent;
-    --_outline-width: 3px;
-    outline: var(--_outline-width) solid var(--background-color-100);
-    outline-offset: calc(-1 * var(--_outline-width));
+    outline-color: var(--background-color-100);
 }
 
 section#timetable .container ul li img {
@@ -106,6 +110,7 @@ section#timetable .container ul li img {
 
     /* styling */
     border-radius: 50%;
+    object-fit: cover;
 }
 
 section#timetable .container ul li .info {

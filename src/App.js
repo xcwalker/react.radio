@@ -5,9 +5,9 @@ import { Helmet } from "react-helmet";
 import { Footer } from "./components/footer";
 import { Player } from "./pages/player";
 
-import "./style/defaults/variables.css"
-import "./style/defaults/page-setup.css"
-import "./style/defaults/transitions.css"
+import "./style/defaults/variables.css";
+import "./style/defaults/page-setup.css";
+import "./style/defaults/transitions.css";
 
 export default function App() {
   return (
@@ -61,8 +61,8 @@ export default function App() {
             <Route path="sr-rock" element={<Navigate to="../simulator-radio-rock" />} />
           </Route>
         </Routes>
+        <Footer />
       </BrowserRouter>
-      <Footer />
     </>
   );
 }
@@ -77,18 +77,17 @@ function ScrollToTop() {
   return null;
 }
 
-
 export const stations = [
   {
     station: "Simulator Radio",
-    url: "/station/simulator-radio"
+    url: "/station/simulator-radio",
   },
   {
     station: "SR Rock",
-    url: "/station/simulator-radio-rock"
+    url: "/station/simulator-radio-rock",
   },
   {
     station: "Truckers FM",
-    url: "/station/truckers-fm"
+    url: "/station/truckers-fm",
   },
-]
+];

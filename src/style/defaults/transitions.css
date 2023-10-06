@@ -11,6 +11,14 @@ body {
     --transition-color-500: color var(--transition-duration-500) var(--transition-method-default);
     --transition-color-400: color var(--transition-duration-400) var(--transition-method-default);
 
+    --transition-border-600: border var(--transition-duration-600) var(--transition-method-default);
+    --transition-border-500: border var(--transition-duration-500) var(--transition-method-default);
+    --transition-border-400: border var(--transition-duration-400) var(--transition-method-default);
+
+    --transition-outline-600: outline var(--transition-duration-600) var(--transition-method-default);
+    --transition-outline-500: outline var(--transition-duration-500) var(--transition-method-default);
+    --transition-outline-400: outline var(--transition-duration-400) var(--transition-method-default);
+
     --transition-background_color-600: background-color var(--transition-duration-600) var(--transition-method-default);
     --transition-background_color-500: background-color var(--transition-duration-500) var(--transition-method-default);
     --transition-background_color-400: background-color var(--transition-duration-400) var(--transition-method-default);
