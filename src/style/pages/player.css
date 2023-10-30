@@ -372,17 +372,14 @@ section#player .container .controls .center {
 section#player .container .controls button {
   /* sizing */
   --size: 40px;
-  width: var(--size);
-  height: var(--size);
+  width: var(--size) !important;
+  height: var(--size) !important;
+  padding: 2px;
 
   /* flex */
   display: flex;
   align-items: center;
   justify-content: center;
-
-  /* text */
-  font-size: calc(var(--size) - 10px);
-  line-height: 1;
 
   /* styling */
   border: 2px solid transparent;
@@ -392,10 +389,19 @@ section#player .container .controls button {
   cursor: pointer;
 }
 
+section#player .container .controls button svg {
+  /* sizing */
+  width: var(--size) !important;
+  height: var(--size) !important;
+
+  /* styling */
+  color: var(--dnu-light-color-100) !important;
+  fill: var(--dnu-light-color-100);
+}
+
 section#player .container .controls button.large {
   /* sizing */
   --size: 50px;
-  font-size: calc(var(--size) - 5px);
 }
 
 section#player .container .controls button:hover,

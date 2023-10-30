@@ -255,24 +255,30 @@ export function Player(props) {
 
               {state === "paused" && (
                 <button
-                  className="material-symbols-outlined large"
+                  className=" large"
                   onClick={() => {
                     playPause();
                   }}
                   title="Play"
                 >
-                  play_arrow
+                  <svg viewBox="0 0 24 24">
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path d="M10 8.64L15.27 12 10 15.36V8.64M8 5v14l11-7L8 5z" />
+                  </svg>
                 </button>
               )}
               {state === "play" && (
                 <button
-                  className="material-symbols-outlined large"
+                  className=" large"
                   onClick={() => {
                     playPause();
                   }}
                   title="Pause"
                 >
-                  pause
+                  <svg viewBox="0 0 24 24">
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                  </svg>
                 </button>
               )}
             </div>
@@ -293,66 +299,95 @@ export function Player(props) {
             </div>
             <div className="center">
               <button
-                className="material-symbols-outlined"
+                className=""
                 onClick={() => {
                   rewind();
                 }}
                 disabled={document.querySelector("#audioPlayer")?.currentTime < 10}
                 title="Rewind 10s"
               >
-                replay_10
+                <svg viewBox="0 0 24 24">
+                  <path d="M0 0h24v24H0V0z" fill="none" />
+                  <path d="M11.99 5V1l-5 5 5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6h-2c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8zm-1.1 11h-.85v-3.26l-1.01.31v-.69l1.77-.63h.09V16zm4.28-1.76c0 .32-.03.6-.1.82s-.17.42-.29.57-.28.26-.45.33-.37.1-.59.1-.41-.03-.59-.1-.33-.18-.46-.33-.23-.34-.3-.57-.11-.5-.11-.82v-.74c0-.32.03-.6.1-.82s.17-.42.29-.57.28-.26.45-.33.37-.1.59-.1.41.03.59.1.33.18.46.33.23.34.3.57.11.5.11.82v.74zm-.85-.86c0-.19-.01-.35-.04-.48s-.07-.23-.12-.31-.11-.14-.19-.17-.16-.05-.25-.05-.18.02-.25.05-.14.09-.19.17-.09.18-.12.31-.04.29-.04.48v.97c0 .19.01.35.04.48s.07.24.12.32.11.14.19.17.16.05.25.05.18-.02.25-.05.14-.09.19-.17.09-.19.11-.32.04-.29.04-.48v-.97z" />
+                </svg>
               </button>
               <button
-                className="material-symbols-outlined"
+                className=""
                 onClick={() => {
                   live();
                 }}
                 title="Live"
               >
-                stream
+                <svg viewBox="0 0 24 24">
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <circle cx="20" cy="12" r="2" />
+                  <circle cx="4" cy="12" r="2" />
+                  <circle cx="12" cy="20" r="2" />
+                  <path d="M10.05 8.59L6.03 4.55h-.01l-.31-.32-1.42 1.41 4.02 4.05.01-.01.31.32zm3.893.027l4.405-4.392L19.76 5.64l-4.405 4.393zM10.01 15.36l-1.42-1.41-4.03 4.01-.32.33 1.41 1.41 4.03-4.02zm9.75 2.94l-3.99-4.01-.36-.35L14 15.35l3.99 4.01.35.35z" />
+                  <circle cx="12" cy="4" r="2" />
+                </svg>
               </button>
 
               {state === "paused" && (
                 <button
-                  className="material-symbols-outlined large"
+                  className=" large"
                   onClick={() => {
                     playPause();
                   }}
                   title="Play"
                 >
-                  play_circle
+                  <svg viewBox="0 0 24 24">
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path d="M10 16.5l6-4.5-6-4.5zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+                  </svg>
                 </button>
               )}
               {state === "play" && (
                 <button
-                  className="material-symbols-outlined large"
+                  className=" large"
                   onClick={() => {
                     playPause();
                   }}
                   title="Pause"
                 >
-                  pause_circle
+                  <svg viewBox="0 0 24 24">
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path d="M9 16h2V8H9v8zm3-14C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm1-4h2V8h-2v8z" />
+                  </svg>
                 </button>
               )}
 
               <button
-                className="material-symbols-outlined"
+                className=""
                 onClick={() => {
                   stop();
                 }}
                 title="Stop"
               >
-                stop_circle
+                <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24">
+                  <g>
+                    <rect fill="none" height="24" />
+                  </g>
+                  <g>
+                    <g>
+                      <rect height="8" width="8" x="8" y="8" />
+                      <path d="M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.41,0-8-3.59-8-8c0-4.41,3.59-8,8-8 s8,3.59,8,8C20,16.41,16.41,20,12,20z" />
+                    </g>
+                  </g>
+                </svg>
               </button>
               <button
-                className="material-symbols-outlined"
+                className=""
                 onClick={() => {
                   fastForward();
                 }}
                 disabled={document.querySelector("#audioPlayer")?.currentTime + 30 > document.querySelector("#audioPlayer")?.duration + 5}
                 title="FastForward 30s"
               >
-                forward_30
+                <svg viewBox="0 0 24 24">
+                  <path d="M0 0h24v24H0V0z" fill="none" />
+                  <path d="M18 13c0 3.31-2.69 6-6 6s-6-2.69-6-6 2.69-6 6-6v4l5-5-5-5v4c-4.42 0-8 3.58-8 8s3.58 8 8 8 8-3.58 8-8h-2zm-7.46 2.22c-.06.05-.12.09-.2.12s-.17.04-.27.04c-.09 0-.17-.01-.25-.04s-.14-.06-.2-.11-.1-.1-.13-.17-.05-.14-.05-.22h-.85c0 .21.04.39.12.55s.19.28.33.38.29.18.46.23.35.07.53.07c.21 0 .41-.03.6-.08s.34-.14.48-.24.24-.24.32-.39.12-.33.12-.53c0-.23-.06-.44-.18-.61s-.3-.3-.54-.39c.1-.05.2-.1.28-.17s.15-.14.2-.22.1-.16.13-.25.04-.18.04-.27c0-.2-.04-.37-.11-.53s-.17-.28-.3-.38-.28-.18-.46-.23-.37-.08-.59-.08c-.19 0-.38.03-.54.08s-.32.13-.44.23-.23.22-.3.37-.11.3-.11.48h.85c0-.07.02-.14.05-.2s.07-.11.12-.15.11-.07.18-.1.14-.03.22-.03c.1 0 .18.01.25.04s.13.06.18.11.08.11.11.17.04.14.04.22c0 .18-.05.32-.16.43s-.26.16-.48.16h-.43v.66h.45c.11 0 .2.01.29.04s.16.06.22.11.11.12.14.2.05.18.05.29c0 .09-.01.17-.04.24s-.08.11-.13.17zm3.9-3.44c-.18-.07-.37-.1-.59-.1s-.41.03-.59.1-.33.18-.45.33-.23.34-.29.57-.1.5-.1.82v.74c0 .32.04.6.11.82s.17.42.3.57.28.26.46.33.37.1.59.1.41-.03.59-.1.33-.18.45-.33.22-.34.29-.57.1-.5.1-.82v-.74c0-.32-.04-.6-.11-.82s-.17-.42-.3-.57-.28-.26-.46-.33zm.01 2.57c0 .19-.01.35-.04.48s-.06.24-.11.32-.11.14-.19.17-.16.05-.25.05-.18-.02-.25-.05-.14-.09-.19-.17-.09-.19-.12-.32-.04-.29-.04-.48v-.97c0-.19.01-.35.04-.48s.06-.23.12-.31.11-.14.19-.17.16-.05.25-.05.18.02.25.05.14.09.19.17.09.18.12.31.04.29.04.48v.97z" />
+                </svg>
               </button>
             </div>
             <div className="right">
@@ -423,7 +458,7 @@ function History(props) {
         setHistory();
         return props.apiHistoryUrl;
       } else {
-        return url
+        return url;
       }
     });
 
