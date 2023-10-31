@@ -10,7 +10,8 @@ import "../style/pages/history.css";
 import "../style/pages/timetable.css";
 import { stations } from "../App";
 
-export function Player(props) {
+export function Player(propsIn) {
+  const [props, setProps] = useState({});
   const [params, setParams] = useSearchParams();
   const [dj, setDJ] = useState();
   const [nowPlaying, setNowPlaying] = useState();
@@ -19,6 +20,14 @@ export function Player(props) {
   const [audioUrlState, setAudioUrlState] = useState("");
   const [state, setState] = useState("paused");
   const [volume, setVolume] = useState(100);
+
+  useEffect(() => {
+    setProps(propsIn);
+    if (props !== propsIn) {
+      setNowPlaying();
+      setDJ();
+    }
+  }, [props, propsIn]);
 
   useEffect(() => {
     if (params.get("oled") !== null) {
@@ -110,11 +119,13 @@ export function Player(props) {
       .catch((error) => {
         console.error(error);
       });
-  }, [count, props.apiUrl, props.apiLive]);
+  }, [count, props]);
 
   useEffect(() => {
     const timer = setTimeout(() => ticking && setCount(count + 1), 3000);
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+    };
   }, [count, ticking]);
 
   function stop() {
@@ -142,8 +153,10 @@ export function Player(props) {
   }, [audioUrlState, state, props.audioUrl]);
 
   useEffect(() => {
-    setAudioUrlState("");
-    setState("paused");
+    if (state === "play") {
+      setAudioUrlState(props.audioUrl);
+      return;
+    }
     return;
   }, [props.audioUrl]);
 
